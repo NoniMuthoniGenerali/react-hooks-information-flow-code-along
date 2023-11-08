@@ -1,13 +1,19 @@
 import React from "react";
-import "./App.css";
-import Parent from "./Parent";
+import { getRandomColor } from "./randomColorGenerator.js";
 
-function App() {
+function Child({ onChangeColor, color }) {
+  function handleClick() {
+    const newColor = getRandomColor();
+    onChangeColor(newColor);
+  }
+
   return (
-    <div className="App">
-      <Parent />
-    </div>
+    <div
+      onClick={handleClick}
+      className="child"
+      style={{ backgroundColor: color }}
+    />
   );
 }
 
-export default App;
+export default Child;
